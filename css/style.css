@@ -1,0 +1,92 @@
+body {
+    font-family: "Myriad Set Pro","Lucida Grande","Helvetica Neue","Helvetica","Arial","Verdana","sans-serif";
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;        
+}
+
+a {
+    text-decoration: none;
+}
+
+/* nav */
+
+nav {
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    float: left;
+    margin-left: 10px;
+    font-size: 20px;
+    color: black;
+    line-height: 30px;
+}
+
+nav ul li a {
+    color: black;
+}
+
+nav .delete-feed {
+    background: none;
+    float: right;
+    display: none;
+    height: 30px;
+    border: 0;
+}
+
+/* items */
+
+.items ul li {
+    margin-bottom 30px;
+    float: left;
+    width: 33%;
+}
+
+.items .item {
+    margin: 5px;
+}
+
+.items .item .cover {
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+}
+
+.items .item .title {
+    margin-top: 10px;
+    color: black;
+    font-size: 30px;
+    height: 115px;
+    line-height: 40px;
+    overflow: hidden;
+}
+
+.items .item .solo {
+    font-size: 40px;
+    line-height: 50px;
+    margin-top: 60px;
+    height: 370px;
+}
+
+/* form */
+
+.add-form input {
+    width: 80%;
+    padding: 5px;
+}
+
+.add-form form {
+    display: none;
+}
+

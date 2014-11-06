@@ -1,0 +1,75 @@
+nav {
+    display: block;
+    padding: 0;
+    margin: 0;
+    float: left;
+    position: fixed;
+    width: 200px;
+}
+
+nav ul li {
+    font-size: 14px;
+    margin-left: 30px;
+    float: none;
+}
+
+nav ul li a:hover {
+    border-bottom: 1px solid black;
+}
+
+/* items */
+.items {
+    margin-top: 30px;
+    margin-left: 200px;
+    min-width: 800px;
+}
+
+.items ul li {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.items .item {
+    margin: 5px;
+}
+
+.items .item .cover-outer {
+    border-radius: 3px;
+    border: 1px solid #eee;
+    width: 210px;
+    height: 110px;
+    float: left;
+    padding: 5px;
+}
+
+.items .item .cover {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 3px;
+}
+
+.items .item .title {
+    color: black;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 0;
+    margin-left: 250px;
+    overflow: none;
+    width: 70%;
+    font-weight: bold;
+}
+
+.items .item .solo {
+    margin-left: 250px;
+    height: 100px;
+}
+
+.items .item .description {
+    margin-top: 15px;
+    overflow: hidden;
+    color: gray;
+    font-family: sans-serif;
+    font-weight: normal;
+}

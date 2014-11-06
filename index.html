@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <title>feed</title>
+
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/style-list.css">
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+  <script src="js/jstorage.js"></script>
+  <script src="js/feed.js"></script>
+  <script src="js/global.js"></script>
+</head>
+<body>
+
+  <nav>
+    <ul class="menu">
+    </ul>        
+    <ul class="add-form">
+      <li><a href="#" class="add-feed-button">Add Feed</a></li>
+      <li>
+        <form name="add-feed">
+          <input type="text" name="title" placeholder="Title">
+          <input type="text" name="url" placeholder="URL">
+          <button type="submit">Add</button>
+          <button name="cancel">Cancel</button>
+        </form>
+      </li>            
+    </ul>
+  </nav>
+
+  <div class="items"></div>
+
+</body>
+</html>
