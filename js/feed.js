@@ -47,7 +47,7 @@
             html += "<div class='title solo'>";
           }
 
-          html += val['title'] +
+          html += "<h2>" + val['title'] + "</h2>" +
             "<div class='description'>" + val['description'] + "</div>" +
             "</div>" +
             "</a>" +

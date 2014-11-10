@@ -22,6 +22,7 @@ nav {
     height: 30px;
     padding: 0;
     margin: 0;
+    top: 100;
 }
 
 nav ul li {
@@ -90,3 +91,47 @@ nav .delete-feed {
     display: none;
 }
 
+/* header */
+
+.headroom {
+    transition: transform 200ms linear;
+    position: fixed;
+    top:0;
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    background: #fff;
+}
+
+.headroom--pinned {
+    transform: translateY(0%);
+}
+
+.headroom--unpinned {
+    transform: translateY(-100%);
+}
+
+h1 {
+    float: left;
+    display: inline;
+    margin: 0;
+    margin-left: 30px;
+}
+
+.contact {
+    float: right;
+    margin-right: 30px;
+}
+
+.contact ul {
+    list-style: none;
+}
+
+.contact ul li {
+    float: left;
+    margin-right: 10px;
+}
+
+.contact ul li img {
+    width: 35px;
+}

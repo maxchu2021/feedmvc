@@ -1,6 +1,8 @@
 $(function() {
   'use strict';
-  
+
+  $("header").headroom();
+
   // default feeds
   feed.add( "Techcrunch", "http://techcrunch.com/feed/" );
   feed.add( "Gamespot", "http://www.gamespot.com/feeds/news/" );

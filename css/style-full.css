@@ -1,0 +1,54 @@
+
+/* items */
+.items {
+    margin-top: 30px;
+    min-width: 800px;
+}
+
+.items ul li {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.items .item {
+    margin: 0;
+}
+
+.items .item .cover-outer {
+    width: 100%;
+    height: 800px;
+}
+
+.items .item .cover {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.items .item .title {
+    margin: 30px auto;
+    max-width: 700px;
+    height: auto;
+    font-weight: bold;
+    color: black;
+    overflow: none;
+}
+
+.items .item h2 {
+    font-size: 60px;
+    text-align: center;
+    line-height: 1;
+}
+.items .item .solo {
+}
+
+.items .item .description {
+    margin-top: 15px;
+    overflow: hidden;
+    color: rgba(0,0,0,0.8);
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 30px;
+}
