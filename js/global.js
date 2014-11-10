@@ -3,12 +3,7 @@ $(function() {
 
   $("header").headroom();
 
-  // default feeds
-  feed.add( "Techcrunch", "http://techcrunch.com/feed/" );
-  feed.add( "Gamespot", "http://www.gamespot.com/feeds/news/" );
-  
   feed.list();
-  feed.fetch( "http://techcrunch.com/feed/" );
 
   // add feed form 
   $('.add-feed-button').click(function ( event ) {
