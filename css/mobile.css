@@ -3,11 +3,6 @@
         width: 95%;
     }
 
-    .items .item .cover-outer {
-        width: 92px;
-        height: 92px;
-    }
-
     nav, .contact {
         display: none;
     }
@@ -38,5 +33,17 @@
 
     h1 {
         margin-left: 10px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .items .item .cover-outer {
+        width: 92px;
+        height: 92px;
+    }
+
+    .items .item .title {
+        height: 180px;
     }
 }
