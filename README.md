@@ -1,4 +1,4 @@
-feed v0.2
+feed v0.3
 ====
 
 Just a RSS Feed Reader
