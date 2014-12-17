@@ -38,3 +38,17 @@ function img2div($str) {
     $str .= "</div>";
     return $str;
 }
+
+function special_character_decode($str) {
+    $str = str_replace('&nbsp;', ' ', $str);
+    $str = str_replace('&#8211;', "–", $str);
+    $str = str_replace('&#8212;', "—", $str);
+    $str = str_replace('&#8216;', "‘", $str);
+    $str = str_replace('&#8217;', "’", $str);
+    $str = str_replace('&#8220;', '“', $str);
+    $str = str_replace('&#8221;', '”', $str);
+    $str = str_replace('&#8230;', "…", $str);
+    $str = str_replace('&hellip;', '…', $str);
+    $str = str_replace('\\u00a0', " ", $str);
+    return $str;
+}

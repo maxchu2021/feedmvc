@@ -23,4 +23,5 @@ foreach($feed as $entry){
 }
 
 $json = json_encode($data);
+$json = special_character_decode($json);
 echo $json;
