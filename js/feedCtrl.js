@@ -56,6 +56,11 @@ feed.controller('FeedCtrl', function FeedCtrl($scope, $http, $templateCache) {
       });
   };
 
+  $scope.showMobileMenu = function() {
+    $('nav').toggle();
+    $('.contact').toggle();
+  }
+
   $scope.listFeed();
   $scope.fetchFeed();
 })

@@ -1,0 +1,42 @@
+@media (max-width: 1200px) {
+    .items ul {
+        width: 95%;
+    }
+
+    .items .item .cover-outer {
+        width: 92px;
+        height: 92px;
+    }
+
+    nav, .contact {
+        display: none;
+    }
+
+    .contact {
+        position: fixed;
+        right: 0;
+        margin-right: 50px;
+    }
+
+    nav {
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        right: 0;
+        margin-right: 10px;
+        background: white;
+    }
+
+    .mobile-menu {
+        float: right;
+        margin-top: 3px;
+        margin-right: 15px;
+        display: block;
+    }
+    .mobile-menu img {
+        background: #000;
+    }
+
+    h1 {
+        margin-left: 10px;
+    }
+}

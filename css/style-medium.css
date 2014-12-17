@@ -37,9 +37,9 @@ nav ul li a:hover {
 }
 
 .items .item .cover-outer {
-    width: 140px;
-    height: 110px;
-    float: left;
+    width: 142px;
+    height: 122px;
+    float: right;
     padding: 5px;
 }
 
@@ -55,9 +55,10 @@ nav ul li a:hover {
     font-size: 14px;
     line-height: 20px;
     margin-top: 0;
-    margin-left: 170px;
+    margin-left: 0px;
     overflow: none;
     font-weight: bold;
+    padding-right: 20px;
 }
 
 .items .item h2 {
