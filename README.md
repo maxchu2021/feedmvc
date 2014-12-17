@@ -13,6 +13,9 @@ Feel free to leave comment on issues, email me to send push request to improve t
 
 ### Version History
 
+v0.3
+- Update style to RWD
+
 v0.2
 - Use AngularJS
 
