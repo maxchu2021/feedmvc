@@ -5,6 +5,24 @@ feed.controller('FeedCtrl', function FeedCtrl($scope, $http, $templateCache) {
   $scope.newFeedUrl = '';
   $scope.method = 'JSON';
   $scope.url = 'ajax/get_feed.php?url=http://feeds.feedburner.com/TechCrunch/';
+  $scope.contacts = [{
+    link: 'mailto:keanyc@gmail.com',
+    icon: 'img/email_icon.png',
+    target: '_self'
+  },{
+    link: 'https://github.com/keanyc/feed',
+    icon: 'img/github_icon.png',
+    target: '_blank'
+  },{
+    link: 'https://twitter.com/keany_chu',
+    icon: 'img/twitter_icon.png',
+    target: '_blank'
+  }];
+
+  $scope.init = function() {
+    if ($.jStorage.index().length === 0)
+      $.jStorage.set( 'TechCrunch', 'http://feeds.feedburner.com/TechCrunch/' );
+  };
 
   $scope.listFeed = function() {
     var index = $.jStorage.index(); 
@@ -61,6 +79,7 @@ feed.controller('FeedCtrl', function FeedCtrl($scope, $http, $templateCache) {
     $('.contact').toggle();
   }
 
+  $scope.init();
   $scope.listFeed();
   $scope.fetchFeed();
 })
