@@ -1,6 +1,7 @@
 feed.controller('FeedCtrl', function FeedCtrl($scope, $http, $templateCache) {
   'use strict';
   $scope.title = 'feed';
+  $scope.showAddFeed = false;
   $scope.newFeedTitle = '';
   $scope.newFeedUrl = '';
   $scope.method = 'JSON';
@@ -44,7 +45,11 @@ feed.controller('FeedCtrl', function FeedCtrl($scope, $http, $templateCache) {
   $scope.addFeed = function() {
     var newFeedTitle = $scope.newFeedTitle.trim();
     var newFeedUrl = $scope.newFeedUrl.trim();
-    
+
+    if (!/^http:\/\//.test(newFeedUrl)) {
+        newFeedUrl = "http://" + newFeedUrl;
+    }
+
     if ( !$.jStorage.get( newFeedTitle ) ) {
       $.jStorage.set( newFeedTitle, newFeedUrl );
       $scope.newFeedTitle = '';
@@ -69,7 +74,7 @@ feed.controller('FeedCtrl', function FeedCtrl($scope, $http, $templateCache) {
         $scope.feeds = data;
       }).
       error(function(data, status) {
-        $scope.data = data || "Request failed";
+        $scope.data = data || 'Request failed';
         $scope.status = status;
       });
   };

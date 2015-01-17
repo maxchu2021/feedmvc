@@ -10,8 +10,10 @@
     <link type="text/css" rel="stylesheet" href="css/style.css">
     <link type="text/css" rel="stylesheet" href="css/style-medium.css">
     <link type="text/css" rel="stylesheet" href="css/mobile.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>[ng-cloak] { display: none; }</style>
   </head>
-  <body ng-controller="FeedCtrl">
+  <body ng-controller="FeedCtrl" ng-show="feeds.length" ng-cloak>
 
     <header data-headroom>
       <h1>{{ title }}</h1>
@@ -29,17 +31,17 @@
       <ul class="menu">
         <li ng-repeat="item in items">
           <a class="feed" ng-click="fetchFeed()">{{ item.name }}</a>
-          <button class="delete-feed" ng-click="removeFeed()">x</button>
+          <button class="delete-feed" ng-click="removeFeed()"><i class="fa fa-times"></i></button>
         </li>
-      </ul>        
+      </ul>
+      <hr>
       <ul class="add-form">
-        <li><a class="add-feed-button">Add Feed</a></li>
+        <li><a class="add-feed-button" ng-click="showAddFeed = !showAddFeed">Add Feed</a></li>
         <li>
-          <form name="add-feed" ng-submit="addFeed()">
+          <form name="add-feed" ng-submit="addFeed()" ng-show="showAddFeed" ng-cloak>
             <input type="text" name="title" placeholder="Title" ng-model="newFeedTitle" required ng-trim="true">
             <input type="text" name="url" placeholder="URL" ng-model="newFeedUrl" required ng-trim="true">
             <button type="submit">Add</button>
-            <button name="cancel">Cancel</button>
           </form>
         </li>            
       </ul>
@@ -70,7 +72,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.26/angular.min.js"></script>
     <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
     <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/jQuery.headroom.min.js"></script>
-    <script src="js/global.js"></script>
+    <script src="js/base.js"></script>
     <script src="js/app.js"></script>
     <script src="js/feedCtrl.js"></script>
   </body>

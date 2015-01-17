@@ -87,10 +87,6 @@ nav .delete-feed {
     padding: 5px;
 }
 
-.add-form form {
-    display: none;
-}
-
 /* header */
 
 .headroom {
@@ -138,4 +134,19 @@ h1 {
 
 .mobile-menu {
     display: none;
+}
+
+.fa-2 {
+    font-size: 2em !important;
+}
+
+.add-form button {
+    background: none;
+    border: 0;
+}
+
+nav hr {
+    width:80%; 
+    border:0; 
+    border-top:1px solid #eee;
 }
