@@ -46,7 +46,7 @@ feed.controller('FeedCtrl', function FeedCtrl($scope, $http, $templateCache) {
     var newFeedTitle = $scope.newFeedTitle.trim();
     var newFeedUrl = $scope.newFeedUrl.trim();
 
-    if (!/^http:\/\//.test(newFeedUrl)) {
+    if (!/^https?\:\/\//.test(newFeedUrl)) {
         newFeedUrl = "http://" + newFeedUrl;
     }
 
