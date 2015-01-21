@@ -20,11 +20,11 @@
       <div class="contact">
         <ul>
           <li ng-repeat="contact in contacts">
-            <a href="{{ contact.link }}" target="{{ contact.target }}"><img ng-src="{{ contact.icon }}"></a></li>
+            <a href="{{ contact.link }}" target="{{ contact.target }}" title="{{ contact.icon }}"><i class="fa fa-{{ contact.icon }} fa-lg"></i></a></li>
           </li>
         </ul>
       </div>
-      <div class="mobile-menu" ng-click="showMobileMenu()"><img src="https://gao.ca/wp-content/themes/gao/img/mobile-nav-icon.png" width="30"></div>
+      <div class="mobile-menu" ng-click="showMobileMenu()"><i class="fa fa-bars fa-lg"></i></div>
     </header>
 
     <nav>

@@ -14,11 +14,12 @@
     }
 
     nav {
-        border: 1px solid #ccc;
+        border: 1px solid #eee;
         border-radius: 6px;
         right: 0;
         margin-right: 10px;
         background: white;
+        padding: 10px 0;
     }
 
     .mobile-menu {
@@ -26,9 +27,9 @@
         margin-top: 3px;
         margin-right: 15px;
         display: block;
-    }
-    .mobile-menu img {
-        background: #000;
+        padding: 4px;
+        border: 1px solid #eee;
+        border-radius: 6px;
     }
 
     h1 {

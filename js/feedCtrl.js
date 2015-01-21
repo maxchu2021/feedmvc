@@ -8,7 +8,7 @@ feed.controller('FeedCtrl', function FeedCtrl($scope, $http, $templateCache) {
   $scope.url = 'ajax/get_feed.php?url=http://feeds.feedburner.com/TechCrunch/';
   $scope.contacts = [{
     link: 'https://github.com/keanyc/feed',
-    icon: 'img/github_icon.png',
+    icon: 'github',
     target: '_blank'
   }];
 
