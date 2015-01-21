@@ -7,16 +7,8 @@ feed.controller('FeedCtrl', function FeedCtrl($scope, $http, $templateCache) {
   $scope.method = 'JSON';
   $scope.url = 'ajax/get_feed.php?url=http://feeds.feedburner.com/TechCrunch/';
   $scope.contacts = [{
-    link: 'mailto:keanyc@gmail.com',
-    icon: 'img/email_icon.png',
-    target: '_self'
-  },{
     link: 'https://github.com/keanyc/feed',
     icon: 'img/github_icon.png',
-    target: '_blank'
-  },{
-    link: 'https://twitter.com/keany_chu',
-    icon: 'img/twitter_icon.png',
     target: '_blank'
   }];
 
