@@ -26,7 +26,7 @@
     <div id="wrapper" data-ng-controller="FeedController as FeedCtrl" data-ng-cloak>
 
         <header data-headroom>
-            <h1>{{ FeedCtrl.Title }}</h1>
+            <h1>feed</h1>
             <div class="mobile-menu">
                 <button class="lines-button x" data-ng-click="isNavOpen = !isNavOpen; FeedCtrl.showMobileMenu();">
                     <span class="lines"></span>
@@ -36,8 +36,8 @@
 
         <nav data-ng-show="isNavOpen">
             <ul class="menu">
-                <li ng-repeat="item in FeedCtrl.items track by $index" data-ng-mouseover="hoverIn()" data-ng-mouseleave="hoverOut()">
-                    <a class="feed" data-ng-click="FeedCtrl.GetFeedList(FeedCtrl, item.url)">{{ item.name }}</a>
+                <li data-ng-repeat="item in FeedCtrl.items track by $index" data-ng-mouseover="hoverIn()" data-ng-mouseleave="hoverOut()">
+                    <a class="feed" data-ng-click="FeedCtrl.GetFeedList(FeedCtrl, item)">{{ item.name }}</a>
                     <button class="delete-feed" data-ng-click="vm.removeFeed(item)" data-ng-show="hoverRemove || isTouchDevice"><i class="fa fa-times"></i></button>
                 </li>
             </ul>
@@ -47,7 +47,7 @@
                 <li>
                     <form name="add-feed" data-ng-submit="vm.addFeed()" data-ng-show="FeedCtrl.showAddFeed" data-ng-cloak>
                         <input type="text" name="title" placeholder="Title" data-ng-model="newFeedTitle" required data-ng-trim="true">
-                        <input type="text" name="url" placeholder="URL" data-ng-model="newFeedUrl" required data-ng-trim="true">
+                        <input type="text" name="url" placeholder="RSS feed URL" data-ng-model="newFeedUrl" required data-ng-trim="true">
                         <button type="submit">Add</button>
                     </form>
                 </li>
@@ -56,8 +56,9 @@
         </nav>
 
         <div class="items">
+            <h3 data-ng-show="FeedCtrl.Feeds.length">{{ FeedCtrl.FeedTitle }}</h3>
             <ul>
-                <li ng-repeat="feed in FeedCtrl.Feeds">
+                <li data-ng-repeat="feed in FeedCtrl.Feeds">
                     <div class="item">
                         <a href="{{ feed.link }}" target="_blank">
                             <div class="cover-outer">

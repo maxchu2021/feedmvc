@@ -21,7 +21,7 @@ module Feed.Controllers {
 
         items: Feed.Models.FeedItemModel[];
 
-        Title: string;
+        FeedTitle: string;
 
         Feeds: any;
 
@@ -66,16 +66,13 @@ module Feed.Controllers {
                 this.hoverRemove = false;
             };
 
-            this.Title = "feed";
-
-            this.Feeds = this.GetFeedList(this, 'http://feeds.feedburner.com/TechCrunch/');
-
-            this.Open = false;
-
             if (this.items.length === 0) {
                 this.items.push(new Feed.Models.FeedItemModel('TechCrunch', 'http://feeds.feedburner.com/TechCrunch/'));
                 this.items.push(new Feed.Models.FeedItemModel('Gamespot', 'http://www.gamespot.com/feeds/news/'));
             }
+
+            this.Open = false;
+            this.GetFeedList(this, this.items[0]);
         }
 
         onFeed() {
@@ -99,12 +96,21 @@ module Feed.Controllers {
         }
 
 
-        GetFeedList(tableState, url) {
+        GetFeedList(tableState, item) {
+            if (this.$scope.isTouchDevice) {
+                this.$scope.isNavOpen = false;
+                this.showMobileMenu();
+            }
             this.LoadingBarUtility.ShowLoadingBar();
-            this.FeedService.GetFeedList(url)
+            this.FeedService.GetFeedList(item.url)
                 .success((result) => {
                     tableState.Feeds = result;
+                    tableState.FeedTitle = item.name;
                     this.LoadingBarUtility.HideLoadingBar();
+                })
+                .error((result) => {
+                    this.LoadingBarUtility.HideLoadingBar();
+                    alert("Can't parse this URL. Please try again.");
                 });
         }
 

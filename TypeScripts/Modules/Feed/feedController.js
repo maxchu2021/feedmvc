@@ -41,13 +41,12 @@ var Feed;
                 this.$scope.hoverOut = function () {
                     this.hoverRemove = false;
                 };
-                this.Title = "feed";
-                this.Feeds = this.GetFeedList(this, 'http://feeds.feedburner.com/TechCrunch/');
-                this.Open = false;
                 if (this.items.length === 0) {
                     this.items.push(new Feed.Models.FeedItemModel('TechCrunch', 'http://feeds.feedburner.com/TechCrunch/'));
                     this.items.push(new Feed.Models.FeedItemModel('Gamespot', 'http://www.gamespot.com/feeds/news/'));
                 }
+                this.Open = false;
+                this.GetFeedList(this, this.items[0]);
             }
             FeedController.prototype.onFeed = function () {
                 this.FeedStorage.put(this.$scope.items);
@@ -65,13 +64,22 @@ var Feed;
             FeedController.prototype.removeFeed = function (FeedItemModel) {
                 this.items.splice(this.items.indexOf(FeedItemModel), 1);
             };
-            FeedController.prototype.GetFeedList = function (tableState, url) {
+            FeedController.prototype.GetFeedList = function (tableState, item) {
                 var _this = this;
+                if (this.$scope.isTouchDevice) {
+                    this.$scope.isNavOpen = false;
+                    this.showMobileMenu();
+                }
                 this.LoadingBarUtility.ShowLoadingBar();
-                this.FeedService.GetFeedList(url)
+                this.FeedService.GetFeedList(item.url)
                     .success(function (result) {
                     tableState.Feeds = result;
+                    tableState.FeedTitle = item.name;
                     _this.LoadingBarUtility.HideLoadingBar();
+                })
+                    .error(function (result) {
+                    _this.LoadingBarUtility.HideLoadingBar();
+                    alert("Can't parse this URL. Please try again.");
                 });
             };
             FeedController.prototype.showMobileMenu = function () {
