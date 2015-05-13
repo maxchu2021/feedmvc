@@ -7,5 +7,10 @@ module Feed.Interfaces {
         newFeedTitle: string;
 		newFeedUrl: string;
 		vm: Feed.Controllers.FeedController;
+		isNavOpen: boolean;
+		hoverIn: any;
+		hoverOut: any;
+		hoverRemove: boolean;
+		isTouchDevice: boolean;
 	}
 }

@@ -7,7 +7,7 @@ body {
 ul {
     margin: 0;
     padding: 0;
-    list-style: none;        
+    list-style: none;
 }
 
 a {
@@ -40,7 +40,6 @@ nav ul li a {
 nav .delete-feed {
     background: none;
     float: right;
-    display: none;
     height: 30px;
     border: 0;
 }
@@ -114,25 +113,6 @@ h1 {
     margin-left: 30px;
 }
 
-.contact {
-    float: right;
-    margin-right: 30px;
-    margin-top: 5px;
-}
-
-.contact ul {
-    list-style: none;
-}
-
-.contact ul li {
-    float: left;
-    margin-right: 10px;
-}
-
-.contact ul li i {
-    font-size: 35px;
-}
-
 .mobile-menu {
     display: none;
 }
@@ -147,7 +127,7 @@ h1 {
 }
 
 nav hr {
-    width:80%; 
-    border:0; 
+    width:80%;
+    border:0;
     border-top:1px solid #eee;
 }

@@ -1,3 +1,4 @@
+/// <reference path="../../../Scripts/typings/jquery/jquery.d.ts"/>
 /// <reference path="../../../Scripts/typings/angularjs/angular.d.ts"/>
 /// <reference path="../../../TypeScripts/app.module.ts"/>
 /// <reference path="../../../TypeScripts/Utilities/LoadingBarUtility/loadingBarUtility.ts"/>
@@ -12,6 +13,7 @@ module Feed.Controllers {
             '$scope',
             '$http',
             '$log',
+            '$window',
             'LoadingBarUtility',
             'FeedService',
             'FeedStorage'
@@ -20,8 +22,6 @@ module Feed.Controllers {
         items: Feed.Models.FeedItemModel[];
 
         Title: string;
-
-        Contacts: any;
 
         Feeds: any;
 
@@ -35,21 +35,38 @@ module Feed.Controllers {
             private $scope: Feed.Interfaces.IFeedScope,
             private $http: ng.IHttpService,
             private $log: ng.ILogService,
+            private $window: ng.IWindowService,
             private LoadingBarUtility: Utilities.LoadingBarUtility,
             private FeedService: Services.FeedService,
             private FeedStorage: Feed.Interfaces.IFeedStorage) {
 
             this.items = $scope.items = this.FeedStorage.get();
 
-            $scope.vm = this;
+            this.$scope.vm = this;
+
+            this.$scope.$watch('items', () => this.onFeed(), true);
+
+            this.$scope.$watch(function(){
+                return $window.innerWidth;
+            }, function(value) {
+                if (value > 1200) {
+                    $scope.isNavOpen = true;
+                    $scope.isTouchDevice = false;
+                } else {
+                    $scope.hoverRemove = true;
+                    $scope.isTouchDevice = true;
+                }
+            });
+
+            this.$scope.hoverIn = function(){
+                this.hoverRemove = true;
+            };
+
+            this.$scope.hoverOut = function(){
+                this.hoverRemove = false;
+            };
 
             this.Title = "feed";
-
-            this.Contacts = [{
-                link: 'https://github.com/keanyc/feed',
-                icon: 'github',
-                target: '_blank'
-            }];
 
             this.Feeds = this.GetFeedList(this, 'http://feeds.feedburner.com/TechCrunch/');
 
@@ -59,8 +76,6 @@ module Feed.Controllers {
                 this.items.push(new Feed.Models.FeedItemModel('TechCrunch', 'http://feeds.feedburner.com/TechCrunch/'));
                 this.items.push(new Feed.Models.FeedItemModel('Gamespot', 'http://www.gamespot.com/feeds/news/'));
             }
-
-            this.$scope.$watch('items', () => this.onFeed(), true);
         }
 
         onFeed() {
@@ -101,9 +116,6 @@ module Feed.Controllers {
                 $('.mobile-menu button').removeClass('close');
                 this.Open = false;
             }
-
-            $('nav').toggle();
-            $('.contact').toggle();
         }
     }
 
