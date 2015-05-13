@@ -3,10 +3,6 @@
         width: 95%;
     }
 
-    nav, .contact {
-        display: none;
-    }
-
     .contact {
         position: fixed;
         right: 0;
@@ -20,6 +16,10 @@
         margin-right: 10px;
         background: white;
         padding: 10px 0;
+    }
+
+    nav .delete-feed {
+        display: block;
     }
 
     .mobile-menu {

@@ -1,3 +1,4 @@
+/// <reference path="../../../Scripts/typings/jquery/jquery.d.ts"/>
 /// <reference path="../../../Scripts/typings/angularjs/angular.d.ts"/>
 /// <reference path="../../../TypeScripts/app.module.ts"/>
 /// <reference path="../../../TypeScripts/Utilities/LoadingBarUtility/loadingBarUtility.ts"/>
@@ -10,29 +11,43 @@ var Feed;
     var Controllers;
     (function (Controllers) {
         var FeedController = (function () {
-            function FeedController($scope, $http, $log, LoadingBarUtility, FeedService, FeedStorage) {
+            function FeedController($scope, $http, $log, $window, LoadingBarUtility, FeedService, FeedStorage) {
                 var _this = this;
                 this.$scope = $scope;
                 this.$http = $http;
                 this.$log = $log;
+                this.$window = $window;
                 this.LoadingBarUtility = LoadingBarUtility;
                 this.FeedService = FeedService;
                 this.FeedStorage = FeedStorage;
                 this.items = $scope.items = this.FeedStorage.get();
-                $scope.vm = this;
+                this.$scope.vm = this;
+                this.$scope.$watch('items', function () { return _this.onFeed(); }, true);
+                this.$scope.$watch(function () {
+                    return $window.innerWidth;
+                }, function (value) {
+                    if (value > 1200) {
+                        $scope.isNavOpen = true;
+                        $scope.isTouchDevice = false;
+                    }
+                    else {
+                        $scope.hoverRemove = true;
+                        $scope.isTouchDevice = true;
+                    }
+                });
+                this.$scope.hoverIn = function () {
+                    this.hoverRemove = true;
+                };
+                this.$scope.hoverOut = function () {
+                    this.hoverRemove = false;
+                };
                 this.Title = "feed";
-                this.Contacts = [{
-                        link: 'https://github.com/keanyc/feed',
-                        icon: 'github',
-                        target: '_blank'
-                    }];
                 this.Feeds = this.GetFeedList(this, 'http://feeds.feedburner.com/TechCrunch/');
                 this.Open = false;
                 if (this.items.length === 0) {
                     this.items.push(new Feed.Models.FeedItemModel('TechCrunch', 'http://feeds.feedburner.com/TechCrunch/'));
                     this.items.push(new Feed.Models.FeedItemModel('Gamespot', 'http://www.gamespot.com/feeds/news/'));
                 }
-                this.$scope.$watch('items', function () { return _this.onFeed(); }, true);
             }
             FeedController.prototype.onFeed = function () {
                 this.FeedStorage.put(this.$scope.items);
@@ -68,13 +83,12 @@ var Feed;
                     $('.mobile-menu button').removeClass('close');
                     this.Open = false;
                 }
-                $('nav').toggle();
-                $('.contact').toggle();
             };
             FeedController.$inject = [
                 '$scope',
                 '$http',
                 '$log',
+                '$window',
                 'LoadingBarUtility',
                 'FeedService',
                 'FeedStorage'
