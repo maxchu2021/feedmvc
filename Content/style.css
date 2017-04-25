@@ -54,7 +54,7 @@ nav .delete-feed {
 }
 
 .items .item {
-    margin: 5px;
+    /*margin: 5px;*/
 }
 
 .items .item .cover {
@@ -66,9 +66,9 @@ nav .delete-feed {
 
 .items .item .title {
     margin-top: 10px;
+    margin-bottom: 50px;
     color: black;
     font-size: 30px;
-    height: 115px;
     line-height: 40px;
     overflow: hidden;
 }
@@ -91,12 +91,10 @@ nav .delete-feed {
 
 .headroom {
     transition: transform 200ms linear;
-    position: fixed;
-    top:0;
-    padding: 5px;
-    border-bottom: 1px solid #eee;
+    position: absolute;
+    top: 5px;
+    right: 5px;
     width: 100%;
-    background: #fff;
 }
 
 .headroom--pinned {
@@ -137,5 +135,4 @@ h3 {
     text-align: center;
     color: #999;
     font-size: 24px;
-    padding-top: 20px;
 }

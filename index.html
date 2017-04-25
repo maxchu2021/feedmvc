@@ -26,7 +26,6 @@
     <div id="wrapper" data-ng-controller="FeedController as FeedCtrl" data-ng-cloak>
 
         <header data-headroom>
-            <h1>feed</h1>
             <div class="mobile-menu">
                 <button class="lines-button x" data-ng-click="isNavOpen = !isNavOpen; FeedCtrl.showMobileMenu();">
                     <span class="lines"></span>
@@ -61,12 +60,12 @@
                 <li data-ng-repeat="feed in FeedCtrl.Feeds">
                     <div class="item">
                         <a href="{{ feed.link }}" target="_blank">
-                            <div class="cover-outer">
+                            <div class="cover-outer" ng-show="feed.cover != null">
                                 <div style="background-image:url({{ feed.cover }})" class="cover"></div>
                             </div>
                             <div class="title">
                                 <h2>{{ feed.title }}</h2>
-                                <div class="description">
+                                <div class="description" ng-show="feed.cover == null">
                                     {{ feed.description }}
                                 </div>
                             </div>
