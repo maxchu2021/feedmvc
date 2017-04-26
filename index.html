@@ -2,107 +2,112 @@
 <html ng-app="Feed">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
 
-    <title>feed</title>
+  <title>feed</title>
 
-    <link type="text/css" rel="stylesheet" href="Content/style.css">
-    <link type="text/css" rel="stylesheet" href="Content/style-medium.css">
-    <link type="text/css" rel="stylesheet" href="Content/mobile.css">
-    <link type="text/css" rel="stylesheet" href="Content/loading-bar.css">
-    <link type="text/css" rel="stylesheet" href="Scss/nav-close.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <style>
-        [data-ng-cloak] {
-            display: none;
-        }
-    </style>
+  <link type="text/css" rel="stylesheet" href="Content/style.css">
+  <link type="text/css" rel="stylesheet" href="Content/style-medium.css">
+  <link type="text/css" rel="stylesheet" href="Content/mobile.css">
+  <link type="text/css" rel="stylesheet" href="Content/loading-bar.css">
+  <link type="text/css" rel="stylesheet" href="Scss/nav-close.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <style>
+    [data-ng-cloak] {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
 
-    <div id="wrapper" data-ng-controller="FeedController as FeedCtrl" data-ng-cloak>
+  <div id="wrapper" data-ng-controller="FeedController as FeedCtrl" data-ng-cloak>
 
-        <header data-headroom>
-            <div class="mobile-menu">
-                <button class="lines-button x" data-ng-click="isNavOpen = !isNavOpen; FeedCtrl.showMobileMenu();">
-                    <span class="lines"></span>
-                </button>
-            </div>
-        </header>
+    <header data-headroom>
+      <div class="mobile-menu">
+        <button class="lines-button x" data-ng-click="isNavOpen = !isNavOpen; FeedCtrl.showMobileMenu();">
+          <span class="lines"></span>
+        </button>
+      </div>
+    </header>
 
-        <nav data-ng-show="isNavOpen">
-            <ul class="menu">
-                <li data-ng-repeat="item in FeedCtrl.items track by $index" data-ng-mouseover="hoverIn()" data-ng-mouseleave="hoverOut()">
-                    <a class="feed" data-ng-click="FeedCtrl.GetFeedList(FeedCtrl, item)">{{ item.name }}</a>
-                    <button class="delete-feed" data-ng-click="vm.removeFeed(item)" data-ng-show="hoverRemove || isTouchDevice"><i class="fa fa-times"></i></button>
-                </li>
-            </ul>
-            <hr>
-            <ul class="add-form">
-                <li><a class="add-feed-button" data-ng-click="FeedCtrl.showAddFeed = !FeedCtrl.showAddFeed">Add Feed</a></li>
-                <li>
-                    <form name="add-feed" data-ng-submit="vm.addFeed()" data-ng-show="FeedCtrl.showAddFeed" data-ng-cloak>
-                        <input type="text" name="title" placeholder="Title" data-ng-model="newFeedTitle" required data-ng-trim="true">
-                        <input type="text" name="url" placeholder="RSS feed URL" data-ng-model="newFeedUrl" required data-ng-trim="true">
-                        <button type="submit">Add</button>
-                    </form>
-                </li>
-                <li><a href="https://github.com/keanyc/feed">Source</a></li>
-            </ul>
-        </nav>
+    <nav data-ng-show="isNavOpen">
+      <ul class="menu">
+        <li data-ng-repeat="item in FeedCtrl.items track by $index" data-ng-mouseover="hoverIn()" data-ng-mouseleave="hoverOut()">
+          <a class="feed" data-ng-click="FeedCtrl.GetFeedList(FeedCtrl, item)">{{ item.name }}</a>
+          <button class="delete-feed" data-ng-click="vm.removeFeed(item)" data-ng-show="hoverRemove || isTouchDevice"><i class="fa fa-times"></i></button>
+        </li>
+      </ul>
+      <hr>
+      <ul class="add-form">
+        <li><a class="add-feed-button" data-ng-click="FeedCtrl.showAddFeed = !FeedCtrl.showAddFeed">Add Feed</a></li>
+        <li>
+          <form name="add-feed" data-ng-submit="vm.addFeed()" data-ng-show="FeedCtrl.showAddFeed" data-ng-cloak>
+            <input type="text" name="title" placeholder="Title" data-ng-model="newFeedTitle" required data-ng-trim="true">
+            <input type="text" name="url" placeholder="RSS feed URL" data-ng-model="newFeedUrl" required data-ng-trim="true">
+            <button type="submit">Add</button>
+          </form>
+        </li>
+        <li><a href="https://github.com/keanyc/feed">Source</a></li>
+      </ul>
+    </nav>
 
-        <div class="items">
-            <h3 data-ng-show="FeedCtrl.Feeds.length">{{ FeedCtrl.FeedTitle }}</h3>
-            <ul>
-                <li data-ng-repeat="feed in FeedCtrl.Feeds">
-                    <div class="item">
-                        <a href="{{ feed.link }}" target="_blank">
-                            <div class="cover-outer" ng-show="feed.cover != null">
-                                <div style="background-image:url({{ feed.cover }})" class="cover"></div>
-                            </div>
-                            <div class="title">
-                                <h2>{{ feed.title }}</h2>
-                                <div class="description" ng-show="feed.cover == null">
-                                    {{ feed.description }}
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-            </ul>
-        </div>
+    <div class="items">
+      <h3 data-ng-show="FeedCtrl.Feeds.length">{{ FeedCtrl.FeedTitle }}</h3>
+      <ul>
+        <li data-ng-repeat="feed in FeedCtrl.Feeds">
+          <div class="item">
+            <a href="{{ feed.link }}">
+              <div class="cover-outer" ng-show="feed.cover != null">
+                <div style="background-image:url({{ feed.cover }})" class="cover"></div>
+              </div>
+              <div class="title">
+                <h2>{{ feed.title }}</h2>
+                <div class="description" ng-show="feed.cover == null">
+                  {{ feed.description }}
+                </div>
+              </div>
+            </a>
+          </div>
+        </li>
+      </ul>
     </div>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jStorage/0.4.12/jstorage.min.js"></script>
-    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
-    <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/jQuery.headroom.min.js"></script>
-    <script src="Scripts/ga.js"></script>
-    <script src="Scripts/base.js"></script>
-    <script src="Scripts/angular.js"></script>
-    <script src="Scripts/loading-bar.js"></script>
-    <script src="TypeScripts/app.module.js"></script>
-    <script src="TypeScripts/Utilities/LoadingBarUtility/loadingBarUtility.js"></script>
-    <script src="TypeScripts/Models/feedItemModel.js"></script>
-    <script src="TypeScripts/Interfaces/IFeedScope.js"></script>
-    <script src="TypeScripts/Interfaces/IFeedStorage.js"></script>
-    <script src="TypeScripts/Services/feedService.js"></script>
-    <script src="TypeScripts/Services/feedStorage.js"></script>
-    <script src="TypeScripts/Modules/Feed/feedController.js"></script>
+    <footer>
+      &copy 2017 KeaNy
+    </footer>
+    
+  </div>
 
-    <script>
-        (function() {
-            angular.module('Feed', ['Feed.Controllers', 'Feed.Utilities']);
-            angular.module('Feed')
-                .run(['LoadingBarUtility', function(LoadingBarUtility) {
-                    LoadingBarUtility.EnableLoadingBar();
-                }]);
-        })();
-    </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jStorage/0.4.12/jstorage.min.js"></script>
+  <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/jQuery.headroom.min.js"></script>
+  <script src="Scripts/ga.js"></script>
+  <script src="Scripts/base.js"></script>
+  <script src="Scripts/angular.js"></script>
+  <script src="Scripts/loading-bar.js"></script>
+  <script src="TypeScripts/app.module.js"></script>
+  <script src="TypeScripts/Utilities/LoadingBarUtility/loadingBarUtility.js"></script>
+  <script src="TypeScripts/Models/feedItemModel.js"></script>
+  <script src="TypeScripts/Interfaces/IFeedScope.js"></script>
+  <script src="TypeScripts/Interfaces/IFeedStorage.js"></script>
+  <script src="TypeScripts/Services/feedService.js"></script>
+  <script src="TypeScripts/Services/feedStorage.js"></script>
+  <script src="TypeScripts/Modules/Feed/feedController.js"></script>
+
+  <script>
+    (function() {
+      angular.module('Feed', ['Feed.Controllers', 'Feed.Utilities']);
+      angular.module('Feed')
+        .run(['LoadingBarUtility', function(LoadingBarUtility) {
+          LoadingBarUtility.EnableLoadingBar();
+        }]);
+    })();
+  </script>
 
 </body>
 
