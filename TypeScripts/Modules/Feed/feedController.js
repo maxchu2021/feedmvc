@@ -45,8 +45,9 @@ var Feed;
                     this.items.push(new Feed.Models.FeedItemModel('TechCrunch', 'http://feeds.feedburner.com/TechCrunch/'));
                     this.items.push(new Feed.Models.FeedItemModel('Gamespot', 'http://www.gamespot.com/feeds/news/'));
                 }
+                var item = typeof localStorage['url'] !== 'undefined' ? JSON.parse(localStorage['url']) : this.items[0];
+                this.GetFeedList(this, item);
                 this.Open = false;
-                this.GetFeedList(this, this.items[0]);
             }
             FeedController.prototype.onFeed = function () {
                 this.FeedStorage.put(this.$scope.items);
@@ -76,6 +77,7 @@ var Feed;
                     tableState.Feeds = result;
                     tableState.FeedTitle = item.name;
                     _this.LoadingBarUtility.HideLoadingBar();
+                    localStorage['url'] = JSON.stringify(item);
                 })
                     .error(function (result) {
                     _this.LoadingBarUtility.HideLoadingBar();
@@ -92,17 +94,17 @@ var Feed;
                     this.Open = false;
                 }
             };
-            FeedController.$inject = [
-                '$scope',
-                '$http',
-                '$log',
-                '$window',
-                'LoadingBarUtility',
-                'FeedService',
-                'FeedStorage'
-            ];
             return FeedController;
-        })();
+        }());
+        FeedController.$inject = [
+            '$scope',
+            '$http',
+            '$log',
+            '$window',
+            'LoadingBarUtility',
+            'FeedService',
+            'FeedStorage'
+        ];
         Controllers.FeedController = FeedController;
         angular.module('Feed.Controllers')
             .controller('FeedController', FeedController);
