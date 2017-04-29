@@ -71,8 +71,10 @@ module Feed.Controllers {
                 this.items.push(new Feed.Models.FeedItemModel('Gamespot', 'http://www.gamespot.com/feeds/news/'));
             }
 
+            var item = typeof localStorage['url'] !== 'undefined' ? JSON.parse(localStorage['url']) : this.items[0];
+
+            this.GetFeedList(this, item);
             this.Open = false;
-            this.GetFeedList(this, this.items[0]);
         }
 
         onFeed() {
@@ -107,6 +109,7 @@ module Feed.Controllers {
                     tableState.Feeds = result;
                     tableState.FeedTitle = item.name;
                     this.LoadingBarUtility.HideLoadingBar();
+                    localStorage['url'] = JSON.stringify(item);
                 })
                 .error((result) => {
                     this.LoadingBarUtility.HideLoadingBar();
