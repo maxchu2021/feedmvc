@@ -1,0 +1,27 @@
+{
+  "name": "feed",
+  "version": "1.0.0",
+  "description": "feed v0.4\r ====",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keanyc/feed.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keanyc/feed/issues"
+  },
+  "homepage": "https://github.com/keanyc/feed#readme",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "font-awesome": "^4.7.0",
+    "headroom.js": "^0.9.3",
+    "jquery": "^3.2.1",
+    "json2": "^0.4.0",
+    "jstorage": "^0.4.8"
+  }
+}

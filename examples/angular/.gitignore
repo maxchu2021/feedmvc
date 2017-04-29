@@ -1,0 +1,5 @@
+
+*.scssc
+
+TypeScripts/tsconfig.json
+node_modules/
