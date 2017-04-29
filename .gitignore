@@ -1,5 +1,4 @@
 
 *.scssc
-
-TypeScripts/tsconfig.json
-node_modules/
+examples/angular/TypeScripts/tsconfig.json
+node_modules
