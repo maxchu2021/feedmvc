@@ -8,14 +8,18 @@
 
   <title>feed</title>
 
-  <link type="text/css" rel="stylesheet" href="../../css/style.css">
-  <link type="text/css" rel="stylesheet" href="../../css/style-medium.css">
-  <link type="text/css" rel="stylesheet" href="../../css/mobile.css">
-  <link type="text/css" rel="stylesheet" href="../../css/loading-bar.css">
-  <link type="text/css" rel="stylesheet" href="../../css/nav-close.css">
-  <link href="../../node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="node_modules/angular-loading-bar/src/loading-bar.css" rel="stylesheet">
+  <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../../css/style.css" rel="stylesheet">
+  <link href="../../css/style-medium.css" rel="stylesheet">
+  <link href="../../css/mobile.css" rel="stylesheet">
+  <link href="../../css/nav-close.css" rel="stylesheet">
   <style>
     [data-ng-cloak] {
+      display: none;
+    }
+
+    #loading-bar-spinner {
       display: none;
     }
   </style>
@@ -77,12 +81,12 @@
 
   </div>
 
-  <script src="../../node_modules/json2/lib/JSON2/static/json2.js"></script>
-  <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="../../node_modules/jStorage/jstorage.min.js"></script>
-  <script src="Scripts/ga.js"></script>
-  <script src="Scripts/angular.js"></script>
-  <script src="Scripts/loading-bar.js"></script>
+  <script src="node_modules/json2/lib/JSON2/static/json2.js"></script>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/jStorage/jstorage.min.js"></script>
+  <script src="node_modules/angular/angular.min.js"></script>
+  <script src="node_modules/angular-loading-bar/src/loading-bar.js"></script>
+  <script src="../../js/ga.js"></script>
   <script src="TypeScripts/app.module.js"></script>
   <script src="TypeScripts/Utilities/LoadingBarUtility/loadingBarUtility.js"></script>
   <script src="TypeScripts/Models/feedItemModel.js"></script>
