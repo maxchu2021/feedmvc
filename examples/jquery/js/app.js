@@ -1,11 +1,17 @@
 $(function() {
   'use strict';
 
-  $("header").headroom();
-
   feed.list();
 
-  // add feed form 
+  $('.x').on( "click", function () {
+    $('nav').toggle();
+    if ($(this).hasClass('close')) 
+      $(this).removeClass('close');
+    else
+      $(this).addClass('close');
+  });
+
+  // add feed form
   $('.add-feed-button').click(function ( event ) {
     event.preventDefault();
 

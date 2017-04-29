@@ -15,6 +15,11 @@
 
       $('nav ul.menu').html('');
 
+      if (index.length === 0) {
+        feed.add('TechCrunch', 'http://feeds.feedburner.com/TechCrunch/');
+        feed.add('Gamespot', 'http://www.gamespot.com/feeds/news/');
+      }
+
       for (var key in index) {
         url = $.jStorage.get( index[key] );
         html += "<li><a href='?feed=" + url + "' data-url='" + url + "' class='feed'>" + index[key] + "</a>";
