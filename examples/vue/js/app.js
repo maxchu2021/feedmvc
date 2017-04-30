@@ -1,4 +1,4 @@
-/*global Vue, todoStorage */
+/*global Vue, feedStorage */
 
 (function(exports) {
 
