@@ -1,0 +1,90 @@
+body {
+  font-family: "Myriad Set Pro", "Lucida Grande", "Helvetica Neue", "Helvetica", "Arial", "Verdana", "sans-serif";
+  background: #fafafa;
+}
+h1 {
+  font-size: 68px;
+  margin: 0;
+  padding: 0;
+}
+header p {
+  font-size: 20px;
+  margin-top: 0;
+}
+a.zocial {
+  background: #f4f4f4;
+  border: 1px solid #777;
+  border-color: rgba(0, 0, 0, 0.2);
+  border-bottom-color: #333;
+  border-bottom-color: rgba(0, 0, 0, 0.4);
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  padding: 6px 10px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+  user-select: none;
+  position: relative;
+  border-radius: .3em;
+}
+a {
+  text-decoration: none;
+}
+li {
+  padding: 5px;
+}
+.zocial.red {
+  color: white;
+  background-color: #b12d2b;
+}
+p {
+  line-height: 1.5;
+}
+img {
+  border-radius: 50%;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: 0;
+  border-left: 0;
+  border-top: 1px solid #eaeaea;
+}
+.logo-icon {
+  display: none;
+}
+footer {
+  text-align: center;
+}
+@media (min-width: 992px) {
+  h1 {
+    font-size: 88px;
+    margin-top: 50px;
+  }
+  .container {
+    width: 700px;
+    margin: 0 auto;
+  }
+  .logo-icon {
+    display: block;
+  }
+  .col-md-4, .col-md-8 {
+    position: relative;
+    float: left;
+    min-height: 1px;
+  }
+  .col-md-4 {
+    width: 33.33333333%;
+  }
+  .col-md-8 {
+    width: 66.66666667%;
+  }
+  li {
+    padding: 15px;
+    display: inline-block;
+    width: 40%;
+  }
+}

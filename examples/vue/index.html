@@ -1,81 +1,74 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
-
-  <title>feed</title>
-
-  <link href="../../css/style.css" rel="stylesheet">
-  <link href="../../css/style-medium.css" rel="stylesheet">
-  <link href="../../css/mobile.css" rel="stylesheet">
-  <link href="../../css/nav-close.css" rel="stylesheet">
-  <style> [v-cloak] { display: none; } </style>
-</head>
-
-<body>
-
-  <div id="wrapper" class="feedapp" v-cloak>
-
-    <header>
-      <div class="mobile-menu">
-        <button class="lines-button x" @click="showMobileMenu()" :class="{close: isMobileMenuOn}">
-          <span class="lines"></span>
-        </button>
-      </div>
-    </header>
-
-    <nav v-show="isMobileMenuOn">
-      <ul class="menu">
-        <li v-for="item in items">
-          <a class="feed" @click="getFeed(item.name, item.url)">{{item.name}}</a>
-          <button class="delete-feed" @click="removeFeed(item)">x</button>
-        </li>
-      </ul>
-      <hr>
-      <ul class="add-form">
-        <li><a class="add-feed-button" @click="showAddFeed()">Add Feed</a></li>
-        <li>
-          <form name="add-feed" v-show="isAddFeedOn">
-            <input type="text" name="name" placeholder="Name" required v-model="newItem.name">
-            <input type="text" name="url" placeholder="RSS feed URL" required v-model="newItem.url" @keyup.enter="addFeed">
-            <button @click="addFeed">Add</button>
-          </form>
-        </li>
-        <li><a href="https://github.com/keanyc/feed">Source</a></li>
-      </ul>
-    </nav>
-
-    <div class="items">
-      <h3>{{feedTitle}}</h3>
-      <ul>
-        <li v-for="feed in feeds" v-show="feeds.length">
-          <div class="item">
-            <a v-bind:href="feed.link">
-              <div class="cover-outer" v-show="feed.cover !== null">
-                <div v-bind:style="{ backgroundImage: 'url(' + feed.cover + ')' }" class="cover"></div>
-              </div>
-              <div class="title">
-                <h2>{{feed.title}}</h2>
-                <div class="description" v-show="feed.cover === null">
-                  {{feed.description}}
+<!doctype html>
+<html lang="en" data-framework="vue">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
+    <title>Vue • Feed</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/style-medium.css">
+    <link rel="stylesheet" href="../../css/mobile.css">
+    <link rel="stylesheet" href="../../css/nav-close.css">
+    <style> [v-cloak] { display: none; } </style>
+  </head>
+  <body>
+    <div id="wrapper" class="feedapp" v-cloak>
+      <header>
+        <div class="mobile-menu">
+          <button class="lines-button x" @click="showMobileMenu()" :class="{close: isMobileMenuOn}">
+            <span class="lines"></span>
+          </button>
+        </div>
+      </header>
+      <nav v-show="isMobileMenuOn">
+        <ul class="menu">
+          <li v-for="item in items">
+            <a class="feed" @click="getFeed(item.name, item.url)">{{item.name}}</a>
+            <button class="delete-feed" @click="removeFeed(item)">x</button>
+          </li>
+        </ul>
+        <hr>
+        <ul class="add-form">
+          <li><a class="add-feed-button" @click="showAddFeed()">Add Feed</a></li>
+          <li>
+            <form name="add-feed" v-show="isAddFeedOn">
+              <input type="text" name="name" placeholder="Name" required v-model="newItem.name">
+              <input type="text" name="url" placeholder="RSS feed URL" required v-model="newItem.url" @keyup.enter="addFeed">
+              <button @click="addFeed">Add</button>
+            </form>
+          </li>
+          <li><a href="https://github.com/keanyc/feed/tree/master/examples/vue">Source</a></li>
+        </ul>
+      </nav>
+      <div class="items">
+        <h3>{{feedTitle}}</h3>
+        <ul>
+          <li v-for="feed in feeds" v-show="feeds.length">
+            <div class="item">
+              <a v-bind:href="feed.link">
+                <div class="cover-outer" v-show="feed.cover !== null">
+                  <div v-bind:style="{ backgroundImage: 'url(' + feed.cover + ')' }" class="cover"></div>
                 </div>
-              </div>
-            </a>
-          </div>
-        </li>
-      </ul>
+                <div class="title">
+                  <h2>{{feed.title}}</h2>
+                  <div class="description" v-show="feed.cover === null">
+                    {{feed.description}}
+                  </div>
+                </div>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <footer class="info">
+        <p>Created by <a href="http://github.com/keanyc">KeaNy</a></p>
+        <p>Part of <a href="http://keanychu.com/feedmvc">FeedMVC</a></p>
+      </footer>
     </div>
-
-  </div>
-
-  <script src="node_modules/axios/dist/axios.min.js"></script>
-  <script src="node_modules/vue/dist/vue.min.js"></script>
-  <script src="../../js/ga.js"></script>
-  <script src="js/store.js"></script>
-  <script src="js/app.js"></script>
-</body>
-
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <script src="../../js/ga.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/app.js"></script>
+  </body>
 </html>

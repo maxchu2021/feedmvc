@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "dependencies": {
+    "axios": "^0.16.1",
+    "classnames": "^2.1.5",
+    "react": "^15.5.4"
+  }
+}
