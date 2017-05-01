@@ -56,10 +56,7 @@ hr {
 .logo-icon {
   display: none;
 }
-footer {
-  text-align: center;
-}
-@media (min-width: 992px) {
+@media (min-width: 700px) {
   h1 {
     font-size: 88px;
     margin-top: 50px;
@@ -85,6 +82,23 @@ footer {
   li {
     padding: 15px;
     display: inline-block;
-    width: 40%;
+    width: 25%;
+  }
+  header {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  header .col-md-4 {
+    text-align: center;
+    color: #ccc;
+  }
+  header .col-md-4 a {
+    color: #ccc;
+  }
+  header img {
+    width: 100%;
+  }
+  footer {
+    text-align: center;
   }
 }
