@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
-    <title>Vue • Feed</title>
+    <title>Vue • FeedMVC</title>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/style-medium.css">
     <link rel="stylesheet" href="../../css/mobile.css">
@@ -15,7 +15,7 @@
     <div id="wrapper" class="feedapp" v-cloak>
       <header>
         <div class="mobile-menu">
-          <button class="lines-button x" @click="showMobileMenu()" :class="{close: isMobileMenuOn}">
+          <button class="lines-button x" @click="toggleMobileMenu()" :class="{close: isMobileMenuOn}">
             <span class="lines"></span>
           </button>
         </div>
@@ -23,7 +23,7 @@
       <nav v-show="isMobileMenuOn">
         <ul class="menu">
           <li v-for="item in items">
-            <a class="feed" @click="getFeed(item.name, item.url)">{{item.name}}</a>
+            <a class="feed" @click="getFeed(item.name, item.url); toggleMobileMenu();">{{item.name}}</a>
             <button class="delete-feed" @click="removeFeed(item)">x</button>
           </li>
         </ul>

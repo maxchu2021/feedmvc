@@ -15,7 +15,7 @@
         name: '',
         url: '',
       },
-      isMobileMenuOn: true,
+      isMobileMenuOn: false,
       isAddFeedOn: false
     },
 
@@ -28,18 +28,7 @@
     },
 
     methods: {
-      showMobileMenu: function() {
-        if (this.items.length === 0) {
-          this.items.push({
-            name: 'TechCrunch',
-            url: 'http://feeds.feedburner.com/TechCrunch/'
-          });
-          this.items.push({
-            name: 'Gamespot',
-            url: 'http://www.gamespot.com/feeds/news/'
-          });
-        }
-
+      toggleMobileMenu: function() {
         this.isMobileMenuOn = !this.isMobileMenuOn;
       },
 
@@ -67,6 +56,8 @@
 
       getFeed: function(name, url) {
         var self = this;
+        self.feeds = null;
+        self.feedTitle = 'loading...';
         axios.get('../../server/get_feed.php?url=' + url)
           .then(function(response) {
             self.feeds = response.data;
@@ -76,6 +67,23 @@
             console.log(error);
           });
       }
+    },
+
+    created () {
+      if (window.innerWidth > 1200) this.isMobileMenuOn = true;
+
+      if (this.items.length === 0) {
+        this.items.push({
+          name: 'TechCrunch',
+          url: 'http://feeds.feedburner.com/TechCrunch/'
+        });
+        this.items.push({
+          name: 'Gamespot',
+          url: 'http://www.gamespot.com/feeds/news/'
+        });
+      }
+
+      this.getFeed(this.items[0].name, this.items[0].url);
     }
   });
 })(window);

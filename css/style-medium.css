@@ -5,6 +5,7 @@ nav {
     float: left;
     position: fixed;
     width: 200px;
+    z-index: 100;
 }
 
 nav ul li {
