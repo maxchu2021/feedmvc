@@ -58,9 +58,12 @@
         var self = this;
         self.feeds = null;
         self.feedTitle = 'loading...';
-        axios.get('../../server/get_feed.php?url=' + url)
+        fetch('../../server/get_feed.php?url=' + url)
           .then(function(response) {
-            self.feeds = response.data;
+            return response.json();
+          })
+          .then(function(response) {
+            self.feeds = response;
             self.feedTitle = name;
           })
           .catch(function(error) {

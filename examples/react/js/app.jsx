@@ -34,11 +34,14 @@ var app = app || {};
 
 		getFeed: function(name, url) {
 			var self = this;
-			axios.get('../../server/get_feed.php?url=' + url)
+			fetch('../../server/get_feed.php?url=' + url)
+				.then(function(response) {
+					return response.json();
+				})
 				.then(function(response) {
 					self.setState({
 						feedTitle: name,
-						feeds: response.data
+						feeds: response
 					});
 				})
 				.catch(function(error) {
@@ -126,7 +129,8 @@ var app = app || {};
 			      </ul>
 			    </div>
 
-			  </div>			);
+			  </div>
+			);
 		}
 	});
 
