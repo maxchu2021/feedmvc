@@ -1,3 +1,8 @@
+body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
 nav {
     display: block;
     padding: 0;
@@ -20,7 +25,7 @@ nav ul li a:hover {
 
 /* items */
 .items ul {
-    width: 700px;
+    width: 670px;
     margin: 0 auto;
 }
 
@@ -33,9 +38,13 @@ nav ul li a:hover {
 }
 
 .cover-outer {
-    width: 100%;
-    height: 275px;
-    float: right;
+    /* width: 100%; */
+    /* height: 275px; */
+    /* float: right; */
+}
+
+.items .item a {
+    display: flex;
 }
 
 .items .item .cover {
@@ -53,7 +62,8 @@ nav ul li a:hover {
     margin-left: 0px;
     overflow: none;
     font-weight: bold;
-    padding-right: 20px;
+    padding-right: 60px;
+    width: 200%;
 }
 
 .items .item h2 {
@@ -73,6 +83,29 @@ nav ul li a:hover {
     font-family: sans-serif;
     font-weight: normal;
     font-size: 16px;
-    height: 100px;
+    height: 40px;
     margin-left: 5px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+  }
+
+  body,
+  nav ul li a,
+  .items .item .title,
+  nav .delete-feed,
+  a {
+    color: rgba(255,255,255,.88);
+  }
+
+  .description {
+    color: #818181;
+  }
 }
