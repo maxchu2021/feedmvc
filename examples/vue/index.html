@@ -23,7 +23,7 @@
       <nav v-show="isMobileMenuOn">
         <ul class="menu">
           <li v-for="item in items">
-            <a class="feed" @click="getFeed(item.name, item.url); toggleMobileMenu();">{{item.name}}</a>
+            <a class="feed" @click="getFeed(item.name, item.url);">{{item.name}}</a>
             <button class="delete-feed" @click="removeFeed(item)">x</button>
           </li>
         </ul>
@@ -46,14 +46,14 @@
           <li v-for="feed in feeds" v-show="feeds.length">
             <div class="item">
               <a v-bind:href="feed.link">
-                <div class="cover-outer" v-show="feed.cover !== null">
-                  <div v-bind:style="{ backgroundImage: 'url(' + feed.cover + ')' }" class="cover"></div>
-                </div>
                 <div class="title">
                   <h2>{{feed.title}}</h2>
-                  <div class="description" v-show="feed.cover === null">
+                  <div class="description">
                     {{feed.description}}
                   </div>
+                </div>
+                <div class="cover-outer" v-show="feed.cover">
+                  <img v-bind:src="feed.cover" width="112" height="112">
                 </div>
               </a>
             </div>
@@ -61,8 +61,8 @@
         </ul>
       </div>
       <footer class="info">
-        <p>Created by <a href="http://github.com/keanyc">KeaNy</a></p>
-        <p>Part of <a href="http://keanychu.com/feedmvc">FeedMVC</a></p>
+        <p>Created by <a href="http://github.com/maxchu2021">Max Chu</a></p>
+        <p>Part of <a href="http://keanux.com/feedmvc">FeedMVC</a></p>
       </footer>
     </div>
     <script src="node_modules/vue/dist/vue.min.js"></script>
